@@ -22,4 +22,5 @@ Route::get('/todos', [App\Http\Controllers\TodoController::class, 'index']);
 Route::get('/todos/{id}', [App\Http\Controllers\TodoController::class, 'show']);
 Route::post('/todos', [App\Http\Controllers\TodoController::class, 'store']);
 Route::put('/todos/{id}', [App\Http\Controllers\TodoController::class, 'update']);
+Route::patch('/todos/{id}', [App\Http\Controllers\TodoController::class, 'updateDone']);
 Route::delete('/todos/{id}', [App\Http\Controllers\TodoController::class, 'destroy']);

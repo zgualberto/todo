@@ -54,10 +54,22 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $this->validator($request);
         return $this->service->update($request->all(), $id);
+    }
+
+    /**
+     * Update done.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDone(Request $request, int $id)
+    {
+        return $this->service->updateDone($request->input('done'), $id);
     }
 
     /**

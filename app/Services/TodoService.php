@@ -30,7 +30,7 @@ class TodoService
         try {
             $todo = Todo::create($data);
             return new TodoResource($todo);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return response()->json([
                 "success" => false,
                 "message" => $e,
@@ -50,7 +50,7 @@ class TodoService
     {
         try {
             $todo = Todo::findOrFail($id);
-        } catch (\Throwable $th) {
+        } catch (Throwable $e) {
             return response()->json([
                 "success" => false,
                 "message" => "Not Found",
@@ -61,7 +61,40 @@ class TodoService
         try {
             $todo->update($data);
             return new TodoResource($todo);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
+            return response()->json([
+                "success" => false,
+                "message" => $e,
+                "data" => $data
+            ], 400);
+        }
+    }
+
+    /**
+     * Update todo
+     * 
+     * @param mixed $todo
+     * @param int $id
+     * @return \App\Todo;
+     */
+    public function updateDone($data, int $id)
+    {
+        try {
+            $todo = Todo::findOrFail($id);
+        } catch (Throwable $e) {
+            return response()->json([
+                "success" => false,
+                "message" => "Not Found",
+                "data" => $data
+            ], 404);
+        }
+
+        try {
+            $todo->done = $data;
+            
+            $todo->save();
+            return new TodoResource($todo);
+        } catch (Throwable $e) {
             return response()->json([
                 "success" => false,
                 "message" => $e,
@@ -90,7 +123,7 @@ class TodoService
         try {
             $todo->delete();
             return new TodoResource($todo);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return response()->json([
                 "success" => false,
                 "message" => "Bad request"
