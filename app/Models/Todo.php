@@ -18,7 +18,7 @@ class Todo extends Model
         'title',
         'description'
     ];
-    
+
     /**
      * Table fields.
      *

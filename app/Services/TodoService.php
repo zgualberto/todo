@@ -91,7 +91,7 @@ class TodoService
 
         try {
             $todo->done = $data;
-            
+
             $todo->save();
             return new TodoResource($todo);
         } catch (Throwable $e) {
