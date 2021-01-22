@@ -11,8 +11,8 @@ class TodoService
 
     /**
      * List orders
-     * 
-     * @return TodoResource 
+     *
+     * @return TodoResource
      */
     public function list()
     {
@@ -21,8 +21,8 @@ class TodoService
 
     /**
      * Create order
-     * 
-     * @param mixed $data 
+     *
+     * @param mixed $data
      * @return \App\Model\Todo;
      */
     public function create($data)
@@ -41,7 +41,7 @@ class TodoService
 
     /**
      * Update todo
-     * 
+     *
      * @param mixed $todo
      * @param int $id
      * @return \App\Todo;
@@ -72,7 +72,7 @@ class TodoService
 
     /**
      * Update todo
-     * 
+     *
      * @param mixed $todo
      * @param int $id
      * @return \App\Todo;
@@ -105,7 +105,7 @@ class TodoService
 
     /**
      * Update todo
-     * 
+     *
      * @param int $id
      * @return \App\Todo;
      */
