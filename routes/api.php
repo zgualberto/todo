@@ -18,9 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/todos', [App\Http\Controllers\TodoController::class, 'index']);
-Route::get('/todos/{id}', [App\Http\Controllers\TodoController::class, 'show']);
-Route::post('/todos', [App\Http\Controllers\TodoController::class, 'store']);
-Route::put('/todos/{id}', [App\Http\Controllers\TodoController::class, 'update']);
+Route::apiResource('todos', App\Http\Controllers\TodoController::class);
 Route::patch('/todos/{id}', [App\Http\Controllers\TodoController::class, 'updateDone']);
-Route::delete('/todos/{id}', [App\Http\Controllers\TodoController::class, 'destroy']);
